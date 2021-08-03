@@ -105,10 +105,14 @@ function modalOpen(event) {
 refs.modalCloseBtn.addEventListener('click', modalClose);
 refs.modalWindow.addEventListener('click', modalClose);
 
-function modalClose() {
+function modalClose(event) {
+    if (event.target.nodeName === 'IMG') {
+        return;
+    }
     refs.modalWindow.classList.remove('is-open');
     refs.modalImage.src = '';
     refs.modalImage.alt = '';
+
     window.removeEventListener('keydown', onEscPress);
 };
 
